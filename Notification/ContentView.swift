@@ -6,16 +6,16 @@
 //
 
 import SwiftUI
+import UserNotifications
+
+// add the object of DateFile here
+// in the notification change the content and title to the content and title from this app using the object of the DateFile created above
+// use on appaear to send the badge if the app is in the foreground as the local notification doesn't come up when the app is in the foreground
 
 struct ContentView: View {
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+        DatePickerView()
     }
 }
 

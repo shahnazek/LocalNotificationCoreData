@@ -7,18 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E72AA0E828F5880B007C990E /* DateFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72AA0E728F5880B007C990E /* DateFile.swift */; };
+		E72AA0EB28F588E6007C990E /* ReminderContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E72AA0E928F588E6007C990E /* ReminderContainer.xcdatamodeld */; };
 		E73AB6DE28F5708E00EF26DF /* NotificationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73AB6DD28F5708E00EF26DF /* NotificationApp.swift */; };
 		E73AB6E028F5708E00EF26DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73AB6DF28F5708E00EF26DF /* ContentView.swift */; };
 		E73AB6E228F5709300EF26DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E73AB6E128F5709300EF26DF /* Assets.xcassets */; };
 		E73AB6E528F5709300EF26DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E73AB6E428F5709300EF26DF /* Preview Assets.xcassets */; };
+		E73AB6EC28F570C700EF26DF /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73AB6EB28F570C700EF26DF /* DatePickerView.swift */; };
+		E74EB3DD28FAE1D70036EB17 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74EB3DC28FAE1D70036EB17 /* Notifications.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E72AA0E728F5880B007C990E /* DateFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFile.swift; sourceTree = "<group>"; };
+		E72AA0EA28F588E6007C990E /* ReminderContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReminderContainer.xcdatamodel; sourceTree = "<group>"; };
 		E73AB6DA28F5708E00EF26DF /* Notification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notification.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E73AB6DD28F5708E00EF26DF /* NotificationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationApp.swift; sourceTree = "<group>"; };
 		E73AB6DF28F5708E00EF26DF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E73AB6E128F5709300EF26DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E73AB6E428F5709300EF26DF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E73AB6EB28F570C700EF26DF /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		E74EB3DC28FAE1D70036EB17 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +61,12 @@
 			children = (
 				E73AB6DD28F5708E00EF26DF /* NotificationApp.swift */,
 				E73AB6DF28F5708E00EF26DF /* ContentView.swift */,
+				E72AA0E728F5880B007C990E /* DateFile.swift */,
+				E73AB6EB28F570C700EF26DF /* DatePickerView.swift */,
+				E74EB3DB28FAE1C00036EB17 /* NotificationHandler */,
 				E73AB6E128F5709300EF26DF /* Assets.xcassets */,
 				E73AB6E328F5709300EF26DF /* Preview Content */,
+				E72AA0E928F588E6007C990E /* ReminderContainer.xcdatamodeld */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -65,6 +77,14 @@
 				E73AB6E428F5709300EF26DF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E74EB3DB28FAE1C00036EB17 /* NotificationHandler */ = {
+			isa = PBXGroup;
+			children = (
+				E74EB3DC28FAE1D70036EB17 /* Notifications.swift */,
+			);
+			path = NotificationHandler;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +158,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E73AB6E028F5708E00EF26DF /* ContentView.swift in Sources */,
+				E74EB3DD28FAE1D70036EB17 /* Notifications.swift in Sources */,
+				E72AA0EB28F588E6007C990E /* ReminderContainer.xcdatamodeld in Sources */,
 				E73AB6DE28F5708E00EF26DF /* NotificationApp.swift in Sources */,
+				E73AB6EC28F570C700EF26DF /* DatePickerView.swift in Sources */,
+				E72AA0E828F5880B007C990E /* DateFile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +363,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E72AA0E928F588E6007C990E /* ReminderContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E72AA0EA28F588E6007C990E /* ReminderContainer.xcdatamodel */,
+			);
+			currentVersion = E72AA0EA28F588E6007C990E /* ReminderContainer.xcdatamodel */;
+			path = ReminderContainer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E73AB6D228F5708E00EF26DF /* Project object */;
 }
