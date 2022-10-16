@@ -71,8 +71,8 @@ class CoreDataViewModel : ObservableObject {
          // first we need to find the entity that is at this indexSet. An IndexSet could have a bunch of indices, but we know when we swipe on a cell, its just one index.
          guard let index = indexSet.first else { return }
          let entity = savedEntities[index]
-         container.viewContext.delete(entity)
          notify.deleteReminders(uuid: entity.reminderID!)
+         container.viewContext.delete(entity)
          saveData()
          
      }

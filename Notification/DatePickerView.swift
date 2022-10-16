@@ -54,9 +54,8 @@ struct DatePickerView: View {
                 Button {
                     guard !titleName.isEmpty else {return}
                     reminderSet = dateFormatter.string(from: selectedDate)
-                    vm.addReminders(text: titleName, reminderText: reminderSet, reminderUUID: notify.uuid)
+                    vm.addReminders(text: titleName, reminderText: reminderSet, reminderUUID: notify.uuidDelete)
                     vm.fetchReminders()
-                    titleName = ""
                     notify.askPermission()
                     
                     
@@ -66,7 +65,8 @@ struct DatePickerView: View {
                         title: titleName, // this part not appearing in the notification received with the titlename, appears with a "string"
                         body: "Time for AppName") // this part is appearing im the notification
                     
-                    
+                    titleName = ""
+
 
                 } label: {
                     Text("Set Reminder")
