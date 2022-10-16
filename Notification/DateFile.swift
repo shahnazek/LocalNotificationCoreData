@@ -44,13 +44,14 @@ class CoreDataViewModel : ObservableObject {
     }
     
     // both text and reminderString will be passed from the mainview and will be stored as title and dateandtime in CoreData
-    func addReminders(text : String, reminderText : String, reminderUUID : UUID) {
-        
+    func addReminder(title: String, date: Date) {
         let newReminder = ReminderEntity(context: container.viewContext)
-        newReminder.title = text
-        newReminder.dateandtime = reminderText
-        newReminder.reminderID = reminderUUID
+        newReminder.title = title
+        newReminder.date = date
+        newReminder.reminderID = UUID()
         saveData()
+
+        notify.sendNotification(for: newReminder)
     }
     
     func saveData(){
@@ -67,13 +68,13 @@ class CoreDataViewModel : ObservableObject {
     
     
     // deleting items from CoreData
-     func deleteReminder(indexSet : IndexSet){
-         // first we need to find the entity that is at this indexSet. An IndexSet could have a bunch of indices, but we know when we swipe on a cell, its just one index.
-         guard let index = indexSet.first else { return }
-         let entity = savedEntities[index]
-         notify.deleteReminders(uuid: entity.reminderID!)
-         container.viewContext.delete(entity)
-         saveData()
-         
-     }
+    func deleteReminder(indexSet : IndexSet){
+        // first we need to find the entity that is at this indexSet. An IndexSet could have a bunch of indices, but we know when we swipe on a cell, its just one index.
+        guard let index = indexSet.first else { return }
+
+        let entity = savedEntities[index]
+        notify.deletePendingNotification(for: entity)
+        container.viewContext.delete(entity)
+        saveData()
+    }
 }

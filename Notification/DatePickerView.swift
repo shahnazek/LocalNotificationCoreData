@@ -17,18 +17,9 @@ struct DatePickerView: View {
     @StateObject var vm = CoreDataViewModel()
     
     @State var titleName : String = ""
-    @State var reminderSet : String = ""
     @State var selectedDate : Date = Date()
     
     let notify = NotificationHandler()
-       
-    var dateFormatter : DateFormatter
-    {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        return formatter
-    }
     
     var body: some View {
         NavigationView {
@@ -52,22 +43,12 @@ struct DatePickerView: View {
                 
 
                 Button {
-                    guard !titleName.isEmpty else {return}
-                    reminderSet = dateFormatter.string(from: selectedDate)
-                    vm.addReminders(text: titleName, reminderText: reminderSet, reminderUUID: notify.uuidDelete)
-                    vm.fetchReminders()
+                    guard !titleName.isEmpty else { return }
+
                     notify.askPermission()
-                    
-                    
-                    notify.sendNotification(
-                        date: selectedDate,
-                        type: "date",
-                        title: titleName, // this part not appearing in the notification received with the titlename, appears with a "string"
-                        body: "Time for AppName") // this part is appearing im the notification
-                    
+                    vm.addReminder(title: titleName, date: selectedDate)
+                    vm.fetchReminders()
                     titleName = ""
-
-
                 } label: {
                     Text("Set Reminder")
                         .font(.headline)
@@ -88,10 +69,13 @@ struct DatePickerView: View {
                             .font(.title.bold())
 
                         ForEach(vm.savedEntities) { entity in
-                            VStack(alignment: .leading){
-                                    Text(entity.title ?? "No Title")
-                                    Text(entity.dateandtime ?? "No Date Selected")
-                                
+                            VStack(alignment: .leading) {
+                                Text(entity.title ?? "No Title")
+                                if let date = entity.date {
+                                    Text(date, format: .dateTime)
+                                } else {
+                                    Text("No Date Selected")
+                                }
                             }
                         }.onDelete(
                             perform: vm.deleteReminder
