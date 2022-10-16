@@ -63,8 +63,8 @@ struct DatePickerView: View {
                     notify.sendNotification(
                         date: selectedDate,
                         type: "date",
-                        title: "AppName+",
-                        body: "Time for AppName")
+                        title: titleName, // this part not appearing in the notification received with the titlename, appears with a "string"
+                        body: "Time for AppName") // this part is appearing im the notification
                     
                     
 
