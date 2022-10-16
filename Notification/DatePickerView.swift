@@ -54,7 +54,7 @@ struct DatePickerView: View {
                 Button {
                     guard !titleName.isEmpty else {return}
                     reminderSet = dateFormatter.string(from: selectedDate)
-                    vm.addReminders(text: titleName, reminderText: reminderSet)
+                    vm.addReminders(text: titleName, reminderText: reminderSet, reminderUUID: notify.uuid)
                     vm.fetchReminders()
                     titleName = ""
                     notify.askPermission()
@@ -93,7 +93,11 @@ struct DatePickerView: View {
                                     Text(entity.dateandtime ?? "No Date Selected")
                                 
                             }
-                        }.onDelete(perform: vm.deleteReminder)
+                        }.onDelete(
+                            perform: vm.deleteReminder
+                        // this is where you call the func to delete notification
+                        )
+                            
                     }
 
                 }

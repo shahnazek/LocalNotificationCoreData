@@ -10,6 +10,8 @@ import UserNotifications
 
 class NotificationHandler{
     
+    var uuidDelete = UUID()
+//    var uuidDelete : [String] = []
     
     func askPermission(){
         
@@ -42,8 +44,16 @@ class NotificationHandler{
         content.sound = UNNotificationSound.default
         
         // Create the request
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request)
+        let request = UNNotificationRequest(identifier: uuidDelete.uuidString,content: content, trigger: trigger)
+        UserNotifications.UNUserNotificationCenter.current().add(request)
+        
+    }
+    
+    func deleteReminders(uuid: [String]){
+                   
+           UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: uuid)
+        
+        
     }
     
     

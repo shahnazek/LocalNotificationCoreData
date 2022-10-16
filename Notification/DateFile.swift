@@ -14,6 +14,8 @@ class CoreDataViewModel : ObservableObject {
     let container : NSPersistentContainer
     @Published var savedEntities: [ReminderEntity] = []
     
+    let notify = NotificationHandler()
+    
     init() {
         // loading the container inside init and printing the error
         // provide the name of the container
@@ -42,11 +44,12 @@ class CoreDataViewModel : ObservableObject {
     }
     
     // both text and reminderString will be passed from the mainview and will be stored as title and dateandtime in CoreData
-    func addReminders(text : String, reminderText : String) {
+    func addReminders(text : String, reminderText : String, reminderUUID : UUID) {
         
         let newReminder = ReminderEntity(context: container.viewContext)
         newReminder.title = text
         newReminder.dateandtime = reminderText
+        newReminder.reminderID = reminderUUID
         saveData()
     }
     
@@ -69,6 +72,7 @@ class CoreDataViewModel : ObservableObject {
          guard let index = indexSet.first else { return }
          let entity = savedEntities[index]
          container.viewContext.delete(entity)
+         notify.deleteReminders(uuid: entity.reminderID!)
          saveData()
          
      }
